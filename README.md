@@ -1,4 +1,4 @@
-This is a redux-react boilerplate app with a store setup and app js already using the connect method. Used in order to get app up and running quickly
+This is a redux-react boilerplate app with a store setup and app js already using the connect method. Used in order to get app up and running quickly. Remove the packages you do not need from package.json
 
 
 
