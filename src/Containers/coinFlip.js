@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class CoinFlip extends Component {
     render() {
-        console.log(this.props.simulationData.experimentDatax);
         return (
             <Card title={<span>Coin Flip <span role="img" aria-label="alien">👾</span></span>}>
                 <Card
