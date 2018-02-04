@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import { Divider } from 'antd';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react';
 import NavBar from '../Components/navBar';
+import SimulationControlButtonGroup from '../Components/simulationControlButtonGroup';
+import { bindActionCreators } from 'redux';
 import { widthResizeActionCreator } from '../Actions/widthResizeAction';
+import { startSimulationAction, resetSimulationAction, pauseSimulationAction, updateSimulationActionCreator } from '../Actions/simulationControlActions';
 
 class App extends Component {
     constructor(props) {
@@ -19,20 +22,40 @@ class App extends Component {
     updateWindowDimensions() {
         this.props.widthResizeActionCreator(window.innerWidth);
     }
+    pauseSimulationButtonClicked() {
+        console.log("paused");
+    }
+    startSimulationButtonClicked() {
+        console.log("start");
+    }
+    resetSimulationButtonClicked() {
+        console.log("reset");
+    }
     render() {
         return (
-            <NavBar minWidth={this.props.importantWidths.minWidth} width={this.props.importantWidths.width} />
+            <div>
+                <NavBar minWidth={this.props.importantWidths.minWidth} width={this.props.importantWidths.width} />
+                <Divider style={{ paddingTop: "0px", marginTop: "0px" }} />
+                <SimulationControlButtonGroup
+                    size="large"
+                    resetClicked={this.resetSimulationButtonClicked.bind(this)}
+                    pauseClicked={this.pauseSimulationButtonClicked.bind(this)}
+                    startClicked={this.startSimulationButtonClicked.bind(this)}
+                />
+                <Divider />
+            </div >
         );
     }
 }
-function mapStateToProps({ importantWidths }) {
+function mapStateToProps({ importantWidths, simulationData }) {
     return {
-        importantWidths
+        importantWidths,
+        simulationData
     };
 };
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        widthResizeActionCreator
+        widthResizeActionCreator,
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
