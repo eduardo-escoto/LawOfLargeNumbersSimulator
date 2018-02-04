@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MobileNav from '../Containers/mobileNav';
 import WideNav from '../Containers/wideNav';
+import MobileNav from '../Containers/mobileNav';
 
 class NavBar extends Component {
     render() {

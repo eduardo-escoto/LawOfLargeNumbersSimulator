@@ -1,11 +1,12 @@
-import { Divider } from 'antd';
-import { connect } from 'react-redux';
+import CoinFlip from './coinFlip';
 import React, { Component } from 'react';
 import NavBar from '../Components/navBar';
 import SimulationControlButtonGroup from '../Components/simulationControlButtonGroup';
+
+import { Divider } from 'antd';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { widthResizeActionCreator } from '../Actions/widthResizeAction';
-import CoinFlip from './coinFlip';
 import { startSimulationAction, resetSimulationAction, pauseSimulationAction, updateSimulationActionCreator } from '../Actions/simulationControlActions';
 
 class App extends Component {

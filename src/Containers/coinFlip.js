@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
 import { Card } from 'antd';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
 
 class CoinFlip extends Component {
     render() {

@@ -1,4 +1,9 @@
-import { PAUSE_SIMULATION, RESET_SIMULATION, START_SIMULATION, UPDATE_SIMULATION } from '../Actions/simulationControlActions';
+import {
+    PAUSE_SIMULATION,
+    RESET_SIMULATION,
+    START_SIMULATION,
+    UPDATE_SIMULATION
+} from '../Actions/simulationControlActions';
 
 
 const initialState = {
