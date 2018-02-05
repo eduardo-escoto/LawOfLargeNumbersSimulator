@@ -51,12 +51,12 @@ class App extends Component {
     stopExperimentCycle() {
         clearInterval(this.state.experimentCycle);
     }
-    marbleBagTrial() {
+    marbleBagTrial(rand) {
         const red = 4;
         const blue = 6;
         const green = 12;
         const yellow = 20;
-        const random = this.getRandomInteger(20);
+        const random = this.getRandomInteger(rand, 20);
         switch (true) {
             case (random <= red): return 0;
             case (random <= blue): return 1;
@@ -67,18 +67,18 @@ class App extends Component {
     }
     individualExperimentCycle() {
         let experimentData = this.props.simulationData.experimentData;
-
+        const randomInt = Math.random();
         experimentData.marbleBag[this.marbleBagTrial()]++;
-        experimentData.coinFlip[this.getRandomInteger(2) - 1]++;
-        experimentData.diceRolls.sixSidedDie[this.getRandomInteger(6) - 1]++;
-        experimentData.diceRolls.eightSidedDie[this.getRandomInteger(8) - 1]++;
-        experimentData.diceRolls.twelveSidedDie[this.getRandomInteger(12) - 1]++;
-        experimentData.diceRolls.twentySidedDie[this.getRandomInteger(20) - 1]++;
+        experimentData.coinFlip[this.getRandomInteger(randomInt, 2) - 1]++;
+        experimentData.diceRolls.sixSidedDie[this.getRandomInteger(randomInt, 6) - 1]++;
+        experimentData.diceRolls.eightSidedDie[this.getRandomInteger(randomInt, 8) - 1]++;
+        experimentData.diceRolls.twelveSidedDie[this.getRandomInteger(randomInt, 12) - 1]++;
+        experimentData.diceRolls.twentySidedDie[this.getRandomInteger(randomInt, 20) - 1]++;
 
         this.props.updateSimulationActionCreator(this.props.simulationData.trialNumber + 1, experimentData)
     }
-    getRandomInteger(integer) {
-        const randomInt = Math.ceil(Math.random() * integer);
+    getRandomInteger(rand, integer) {
+        const randomInt = Math.ceil(rand * integer);
         return randomInt;
     }
     render() {
