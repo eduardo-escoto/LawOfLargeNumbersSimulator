@@ -13,7 +13,7 @@ export const pauseSimulationAction = {
 export const resetSimulationAction = {
     type: RESET_SIMULATION
 }
-export function updateSimulationActionCreator(trialNumber, experimentData) {
+export default function updateSimulationActionCreator(trialNumber, experimentData) {
     return {
         type: UPDATE_SIMULATION,
         payload: { trialNumber, experimentData }

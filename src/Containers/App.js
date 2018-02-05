@@ -1,13 +1,13 @@
-import CoinFlip from './coinFlip';
 import React, { Component } from 'react';
 import NavBar from '../Components/navBar';
+import changePageActionCreator from '../Actions/changePageAction';
+import widthResizeActionCreator from '../Actions/widthResizeAction';
 import SimulationControlButtonGroup from '../Components/simulationControlButtonGroup';
 
 import { Divider } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { widthResizeActionCreator } from '../Actions/widthResizeAction';
-import { startSimulationAction, resetSimulationAction, pauseSimulationAction, updateSimulationActionCreator } from '../Actions/simulationControlActions';
+import updateSimulationActionCreator, { startSimulationAction, resetSimulationAction, pauseSimulationAction } from '../Actions/simulationControlAction';
 
 class App extends Component {
     constructor(props) {
@@ -93,19 +93,21 @@ class App extends Component {
                     startClicked={this.startSimulationButtonClicked.bind(this)}
                 />
                 <Divider />
-                <CoinFlip />
+                {this.props.currentPage}
             </div >
         );
     }
 }
-function mapStateToProps({ importantWidths, simulationData }) {
+function mapStateToProps({ importantWidths, simulationData, currentPage }) {
     return {
-        importantWidths,
-        simulationData
+        currentPage,
+        simulationData,
+        importantWidths
     };
 };
 function mapDispatchToProps(dispatch) {
     const boundActionCreators = bindActionCreators({
+        changePageActionCreator,
         widthResizeActionCreator,
         updateSimulationActionCreator
     }, dispatch);

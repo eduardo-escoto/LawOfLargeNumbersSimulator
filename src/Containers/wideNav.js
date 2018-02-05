@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
 import { Menu } from 'antd';
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import changePageActionCreator from '../Actions/changePageAction';
 
-class wideNav extends Component {
+class WideNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
             current: 'title'
         }
     }
-    handleClick(e) {
-        this.setState({
-            current: e.key,
-        });
-    }
     render() {
         return (
-            <Menu onClick={this.handleClick.bind(this)}
+            <Menu onClick={this.props.changePage.bind(this)}
                 selectedKeys={[this.state.current]} mode="horizontal" >
                 <Menu.Item key="title">Law of Large Numbers <span role="img" aria-label="sparkles">✨</span></Menu.Item>
                 <Menu.Item key="coinFlip">
@@ -35,4 +33,14 @@ class wideNav extends Component {
     }
 }
 
-export default wideNav;
+function mapStateToProps({ currentPage }) {
+    return {
+        currentPage
+    };
+};
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        changePageActionCreator
+    }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(WideNav)

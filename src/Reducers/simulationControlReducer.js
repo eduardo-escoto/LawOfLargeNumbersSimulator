@@ -3,7 +3,7 @@ import {
     RESET_SIMULATION,
     START_SIMULATION,
     UPDATE_SIMULATION
-} from '../Actions/simulationControlActions';
+} from '../Actions/simulationControlAction';
 
 
 const initialState = {
