@@ -68,7 +68,8 @@ class App extends Component {
     individualExperimentCycle() {
         let experimentData = this.props.simulationData.experimentData;
         const randomInt = Math.random();
-        experimentData.marbleBag[this.marbleBagTrial()]++;
+
+        experimentData.marbleBag[this.marbleBagTrial(randomInt)]++;
         experimentData.coinFlip[this.getRandomInteger(randomInt, 2) - 1]++;
         experimentData.diceRolls.sixSidedDie[this.getRandomInteger(randomInt, 6) - 1]++;
         experimentData.diceRolls.eightSidedDie[this.getRandomInteger(randomInt, 8) - 1]++;
