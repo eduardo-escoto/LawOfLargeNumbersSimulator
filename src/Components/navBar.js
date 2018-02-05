@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WideNav from '../Containers/wideNav';
 import MobileNav from '../Containers/mobileNav';
 import { Pages } from '../Reducers/changePageReducer';
+
 class NavBar extends Component {
     changePage(e) {
         this.setState({
@@ -22,7 +23,9 @@ class NavBar extends Component {
         this.props.changePageActionCreator(selectedPage);
     }
     render() {
-        return (this.props.width > this.props.minWidth) ? <WideNav changePage={this.changePage} /> : <MobileNav changePage={this.changePage} />;
+        return (this.props.width > this.props.minWidth) ?
+            <WideNav changePage={this.changePage} /> :
+            <MobileNav changePage={this.changePage} />;
     }
 }
 

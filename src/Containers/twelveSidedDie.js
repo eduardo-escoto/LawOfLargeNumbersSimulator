@@ -21,6 +21,7 @@ function TwelveSidedDie(props) {
             data={data}
             emoji={emoji}
             title={title}
+            arrayForm={false}
             emojiName={emojiName}
             trialNumber={trialNumber}
             experimentType={experimentType}

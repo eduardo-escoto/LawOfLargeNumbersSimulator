@@ -1,5 +1,6 @@
 import React from 'react';
 import CoinFlip from '../Containers/coinFlip';
+import MarbleBag from '../Containers/marbleBag';
 import SixSidedDie from '../Containers/sixSidedDie';
 import EightSidedDie from '../Containers/eightSidedDie';
 import TwelveSidedDie from '../Containers/twelveSidedDie';
@@ -8,12 +9,13 @@ import { CHANGE_PAGE } from '../Actions/changePageAction';
 import AllExperiments from '../Components/allExperiments';
 
 export const Pages = {
-    allExperiments: <AllExperiments />,
     coinFlip: <CoinFlip />,
+    marbleBag: <MarbleBag />,
     sixSidedDie: <SixSidedDie />,
     eightSidedDie: <EightSidedDie />,
     twelveSidedDie: <TwelveSidedDie />,
-    twentySidedDie: <TwentySidedDie />
+    twentySidedDie: <TwentySidedDie />,
+    allExperiments: <AllExperiments />
 }
 
 const initialState = Pages.allExperiments;

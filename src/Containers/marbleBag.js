@@ -25,6 +25,7 @@ function MarbleBag(props) {
             experimentalYield={experimentalYield}
             experimentSubjects={experimentSubjects}
             experimentalYieldNum={experimentalYieldNum}
+            arrayForm={true}
         />
     );
 }
@@ -35,4 +36,4 @@ function mapStateToProps({ importantWidths, simulationData }) {
         simulationData
     };
 };
-export default connect(mapStateToProps)(CoinFlip);
+export default connect(mapStateToProps)(MarbleBag);
