@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ExperimentInnerCard from './experimentInnerCard';
 
 const style = {
-    margin: "10px 30px 10px 30px",
+    margin: "0px 30px 30px 30px",
     padding: "0px 0px 0px 0px"
 };
 
