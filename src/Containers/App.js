@@ -15,10 +15,12 @@ class App extends Component {
         this.state = {
             experimentCycle: null
         }
+
         this.individualExperimentCycle = this.individualExperimentCycle.bind(this);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.startExperimentCycle = this.startExperimentCycle.bind(this);
         this.stopExperimentCycle = this.stopExperimentCycle.bind(this);
+        this.incrementTrials = this.incrementTrials.bind(this);
     }
     componentDidMount() {
         this.updateWindowDimensions();
@@ -56,7 +58,7 @@ class App extends Component {
         const blue = 6;
         const green = 12;
         const yellow = 20;
-        const random = this.getRandomInteger(rand, 20);
+        const random = this.getIntegerFromRandom(rand, 20);
         switch (true) {
             case (random <= red): return 0;
             case (random <= blue): return 1;
@@ -66,20 +68,24 @@ class App extends Component {
         }
     }
     individualExperimentCycle() {
-        let experimentData = this.props.simulationData.experimentData;
         const randomInt = Math.random();
-
-        experimentData.marbleBag[this.marbleBagTrial(randomInt)]++;
-        experimentData.coinFlip[this.getRandomInteger(randomInt, 2) - 1]++;
-        experimentData.diceRolls.sixSidedDie[this.getRandomInteger(randomInt, 6) - 1]++;
-        experimentData.diceRolls.eightSidedDie[this.getRandomInteger(randomInt, 8) - 1]++;
-        experimentData.diceRolls.twelveSidedDie[this.getRandomInteger(randomInt, 12) - 1]++;
-        experimentData.diceRolls.twentySidedDie[this.getRandomInteger(randomInt, 20) - 1]++;
-
+        const experimentData = this.incrementTrials(randomInt);
         this.props.updateSimulationActionCreator(this.props.simulationData.trialNumber + 1, experimentData)
     }
-    getRandomInteger(rand, integer) {
-        const randomInt = Math.ceil(rand * integer);
+    incrementTrials(randomInt) {
+        let experimentData = { ...this.props.simulationData.experimentData };
+
+        experimentData.marbleBag[this.marbleBagTrial(randomInt)]++;
+        experimentData.coinFlip[this.getIntegerFromRandom(randomInt, 2) - 1]++;
+        experimentData.diceRolls.sixSidedDie[this.getIntegerFromRandom(randomInt, 6) - 1]++;
+        experimentData.diceRolls.eightSidedDie[this.getIntegerFromRandom(randomInt, 8) - 1]++;
+        experimentData.diceRolls.twelveSidedDie[this.getIntegerFromRandom(randomInt, 12) - 1]++;
+        experimentData.diceRolls.twentySidedDie[this.getIntegerFromRandom(randomInt, 20) - 1]++;
+
+        return experimentData;
+    }
+    getIntegerFromRandom(random, integer) {
+        const randomInt = Math.ceil(random * integer);
         return randomInt;
     }
     render() {

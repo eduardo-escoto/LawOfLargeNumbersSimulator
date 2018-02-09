@@ -57,6 +57,7 @@ class ExperimentCard extends Component {
                 key
             }
         });
+
         return ([...tabList, { tab: "All Outcomes", key: tabList.length }]);
     }
     render() {
@@ -67,6 +68,7 @@ class ExperimentCard extends Component {
                 <div>Trials: {this.props.trialNumber}</div>
             </span>
         );
+
         return (
             <Card
                 style={style}
